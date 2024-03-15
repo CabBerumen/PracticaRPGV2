@@ -48,12 +48,37 @@ Character* Enemy::selectTarget(vector<Player*> possibleTargets) {
 Action Enemy::takeAction(vector<Player*> partyMembers) {
     Action currentAction;
     currentAction.speed = getSpeed();
+    isDefending = false;
 
     Character* target = selectTarget(partyMembers);
-    currentAction.target = target;
-    currentAction.action = [this, target](){
-        doAttack(target);
-    };
+
+    int refenceHealth = this -> getHealth() * 0.15;
+
+    if (this -> getHealth() < refenceHealth){
+        int EnemyDefense = rand() % 100 + 1;
+        cout << "EnemyDefense drop is " + to_string(EnemyDefense) <<endl;
+
+        if (EnemyDefense > 40){
+            cout << "Defense process" <<endl;
+            currentAction.target = nullptr;
+            currentAction.action = [this](){
+                defend();
+                cout << "Defense has been implented" << endl;
+            };
+        }else{
+            currentAction.target = target;
+            currentAction.action = [this, target](){
+                doAttack(target);
+            };
+        }
+    }else{
+        currentAction.target = target;
+        currentAction.action = [this, target](){
+            doAttack(target);
+        };
+
+
+    }
 
     return currentAction;
 }

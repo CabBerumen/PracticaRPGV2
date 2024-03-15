@@ -25,6 +25,9 @@ int Character::getAttack() {
 }
 
 int Character::getDefense() {
+    if (isDefending){
+        return defense*1.20;
+    }
     return defense;
 }
 
@@ -46,4 +49,7 @@ bool Character::flee(Character*target) {
 
     int chance = rand() % 100;
     return chance > 30;
+}
+void Character::defend() {
+    isDefending=true;
 }

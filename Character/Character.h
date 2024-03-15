@@ -16,6 +16,7 @@ protected:
     int defense;
     int speed;
     bool isPlayer;
+    bool isDefending;
 public:
     Character(string _name, int _health, int _attack, int _defense, int _speed, bool _isPlayer);
 
