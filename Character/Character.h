@@ -5,11 +5,13 @@
 #ifndef RPG_CHARACTER_H
 #define RPG_CHARACTER_H
 #include <string>
-
+#include <cmath>
 using namespace std;
 
 class Character {
+
 protected:
+
     char name[40];
     int health;
     int attack;
@@ -17,7 +19,9 @@ protected:
     int speed;
     bool isPlayer;
     bool isDefending;
+
 public:
+
     Character(const char _name[], int _health, int _attack, int _defense, int _speed, bool _isPlayer);
 
     virtual void doAttack(Character *target) = 0;
@@ -35,6 +39,7 @@ public:
     bool getIsPlayer();
     int getSpeed();
     string toString();
+
 };
 
 

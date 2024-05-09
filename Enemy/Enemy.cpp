@@ -77,8 +77,8 @@ Action Enemy::takeAction(vector<Player*> partyMembers) {
             doAttack(target);
         };
 
-
     }
 
     return currentAction;
 }
+

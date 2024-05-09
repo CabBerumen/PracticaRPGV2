@@ -28,15 +28,34 @@ void Player::takeDamage(int damage) {
     }
 }
 
-void Player::levelUp() {
-    level++;
-}
+void Player::levelUp()
+{
+    int experienceValue = 10;
 
-void Player::gainExperience(int exp) {
-    experience += exp;
-    if (experience >= 100) {
+    experience -= experienceValue;
+
+    level++;
+    health += 5;
+    attack += 5;
+    defense += 5;
+    speed += 5;
+
+    cout << "----------------------------------------------" << endl;
+    cout << "You have leveled up to: " << level << endl;
+    cout << "Health: " << health << ", Attack: " << attack << ", Defense: " << defense << ", Speed: " << speed << endl;
+    cout << "Level Experience: " << experience << endl;
+
+    if (experience >= experienceValue) {
         levelUp();
-        experience = 100-experience;
+    }
+
+}
+void Player::gainExperience(int exp) {
+    int experienceValue = 10;
+    experience += exp;
+
+    if (experience >= experienceValue) {
+        levelUp();
     }
 }
 
@@ -49,43 +68,52 @@ Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
 
     //TODO: Add input validation
     cin >> selectedTarget;
+    selectedTarget--;
     return possibleTargets[selectedTarget];
 }
 
 Action Player::takeAction(vector<Enemy*> enemies) {
-    isDefending = false;
-    int action = 0;
+    int action;
     cout << "Select an action: " << endl
-    << "1. Attack" << endl
-    << "2. Defend" << endl;
-
-    //TODO: Validate input
+         << "1. Attack" << endl
+         << "2. Defend" << endl;
     cin >> action;
     Action currentAction;
     Character* target = nullptr;
-
+    int originalDefense = defense;
     switch(action) {
-        case 1:
-            target = selectTarget(enemies);
+    case 1:
+            if (!enemies.empty()) {
+                target = selectedEnemy;
+            } else {
+                currentAction.action = nullptr;
+                return currentAction;
+            }
+        currentAction.target = target;
+        currentAction.action = [this, target](){
+            doAttack(target);
+        };
+        currentAction.speed = getSpeed();
+        break;
+    case 2:
+        defend();
+        if (!enemies.empty()) {
+            target = enemies[0];
+        }
+        if (target) {
             currentAction.target = target;
-            currentAction.action = [this, target](){
-                doAttack(target);
+            currentAction.action = [this, target, originalDefense](){
+                defense = originalDefense;
             };
-            currentAction.speed = getSpeed();
-            break;
-
-        case 2:
-            currentAction.target = nullptr;
-            currentAction.action = [this](){
-                defend();
-                cout << "Is Defending!" << endl;
-
-            };
-            currentAction.speed = 999999;
-            break;
-        default:
-            cout << "Invalid action" << endl;
-            break;
+            currentAction.speed = target->getSpeed();
+        } else {
+            currentAction.action = nullptr;
+        }
+        break;
+    default:
+        cout << "Invalid action" << endl;
+        currentAction.action = nullptr;
+        break;
     }
 
     return currentAction;

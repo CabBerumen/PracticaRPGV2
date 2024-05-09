@@ -40,9 +40,11 @@ int Character::getSpeed() {
 }
 
 string Character::toString() {
-    string aux = "Name";
+
+    string aux = "Name: ";
     aux.append(name).append("\nHealth: " + to_string(health) + "\nAttack: " + to_string(attack) + "\nDefense: " + to_string(defense) + "\nSpeed: " + to_string(speed));
     return aux;
+
 }
 
 bool Character::getIsPlayer() {
@@ -58,4 +60,5 @@ bool Character::flee(Character*target) {
 }
 void Character::defend() {
     isDefending=true;
+    defense = std::ceil(defense*1.2);
 }
