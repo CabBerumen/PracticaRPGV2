@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include <iostream>
+#include <random>
 
 #include "../Files/FileHandler.h"
 
@@ -49,28 +50,33 @@ void Player::takeDamage(int damage) {
 
 void Player::levelUp()
 {
+    int points = 5;
+
     level++;
 
-    health += 5;
-    attack += 5;
-    defense += 5;
-    speed += 5;
+    health += points;
+    attack += points;
+    defense += points;
+    speed += points;
 
     cout << "----------------------------------------------" << endl;
     cout << "You have leveled up to: " << level << endl;
     cout << "Health: " << health << ", Attack: " << attack << ", Defense: " << defense << ", Speed: " << speed << endl;
 
+
+
 }
 void Player::gainExperience(int exp) {
     experience += exp;
-
     cout << "You have earned: " << exp << " experience" <<endl;
 
     if (experience >= 100) {
         experience = experience - 100;
         levelUp();
+        cout << "You kept " << experience << " experience " << endl;
 
     }
+
 }
 
 Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
@@ -104,17 +110,17 @@ Action Player::takeAction(vector<Enemy*> enemies) {
     cin >> action;
     Action currentAction;
     Character* target = nullptr;
-    int originalDefense = defense;
     switch(action)
     {
     case 1:
         target = selectTarget(enemies);
         currentAction.target = target;
-        currentAction.action = [this, target](){
+        currentAction.action = [this, target, &enemies](){
             doAttack(target);
             if (target -> getHealth() <= 0)
             {
-                this -> gainExperience(((Enemy *) target) -> getExperience());
+                this->gainExperience(((Enemy *) target)->getExperience());
+
             }
         };
         currentAction.speed = getSpeed();

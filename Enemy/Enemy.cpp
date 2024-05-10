@@ -14,6 +14,17 @@ Enemy::Enemy(const char _name[], int _health, int _attack, int _defense, int _sp
     experience = _experience;
 }
 
+void Enemy::increaseStats(int points)
+{
+    cout << "Enemies have leveled up...!" << endl;
+
+    health += points;
+    attack += points;
+    defense += points;
+
+}
+
+
 void Enemy::doAttack(Character *target) {
     target->takeDamage(getRolledAttack(attack));
 }
