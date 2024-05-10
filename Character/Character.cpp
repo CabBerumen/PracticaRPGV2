@@ -16,7 +16,7 @@ Character::Character(const char _name[], int _health, int _attack, int _defense,
     isPlayer = _isPlayer;
 }
 
-string Character::getName() {
+char* Character::getName() {
     return name;
 }
 

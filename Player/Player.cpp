@@ -30,11 +30,8 @@ void Player::takeDamage(int damage) {
 
 void Player::levelUp()
 {
-    int experienceValue = 10;
-
-    experience -= experienceValue;
-
     level++;
+
     health += 5;
     attack += 5;
     defense += 5;
@@ -43,32 +40,39 @@ void Player::levelUp()
     cout << "----------------------------------------------" << endl;
     cout << "You have leveled up to: " << level << endl;
     cout << "Health: " << health << ", Attack: " << attack << ", Defense: " << defense << ", Speed: " << speed << endl;
-    cout << "Level Experience: " << experience << endl;
-
-    if (experience >= experienceValue) {
-        levelUp();
-    }
 
 }
 void Player::gainExperience(int exp) {
-    int experienceValue = 10;
     experience += exp;
 
-    if (experience >= experienceValue) {
+    cout << "You have earned: " << exp << " experience" <<endl;
+
+    if (experience >= 100) {
+        experience = experience - 100;
         levelUp();
+
     }
 }
 
 Character* Player::selectTarget(vector<Enemy*> possibleTargets) {
     int selectedTarget = 0;
-    cout << "Select a target: " << endl;
-    for (int i = 0; i < possibleTargets.size(); i++) {
-        cout << i << ". " << possibleTargets[i]->getName() << endl;
-    }
-
-    //TODO: Add input validation
-    cin >> selectedTarget;
-    selectedTarget--;
+    bool invalid = true;
+    do {
+        cout << "Select a target: " << endl;
+        for (int i = 0; i < possibleTargets.size(); i++) {
+            cout << i << ". " << possibleTargets[i]->getName() << endl;
+        }
+        cin >> selectedTarget;
+        for (int i = 0; i < possibleTargets.size(); i++) {
+            if (selectedTarget == i) {
+                invalid = false;
+                break;
+            }
+        }
+        if (invalid) {
+            cout << "Invalid option" << endl;
+        }
+    } while (invalid);
     return possibleTargets[selectedTarget];
 }
 
@@ -81,34 +85,27 @@ Action Player::takeAction(vector<Enemy*> enemies) {
     Action currentAction;
     Character* target = nullptr;
     int originalDefense = defense;
-    switch(action) {
+    switch(action)
+    {
     case 1:
-            if (!enemies.empty()) {
-                target = selectedEnemy;
-            } else {
-                currentAction.action = nullptr;
-                return currentAction;
-            }
+        target = selectTarget(enemies);
         currentAction.target = target;
         currentAction.action = [this, target](){
             doAttack(target);
+            if (target -> getHealth() <= 0)
+            {
+                this -> gainExperience(((Enemy *) target) -> getExperience());
+            }
         };
         currentAction.speed = getSpeed();
         break;
     case 2:
-        defend();
-        if (!enemies.empty()) {
-            target = enemies[0];
-        }
-        if (target) {
             currentAction.target = target;
-            currentAction.action = [this, target, originalDefense](){
-                defense = originalDefense;
+            currentAction.action = [this]()
+            {
+                defend();
             };
-            currentAction.speed = target->getSpeed();
-        } else {
-            currentAction.action = nullptr;
-        }
+            currentAction.speed = 999999;
         break;
     default:
         cout << "Invalid action" << endl;

@@ -224,6 +224,30 @@ Enemy/Enemy.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\rpg.dir\build.make CMakeFiles/rpg.dir/Enemy/Enemy.cpp.s
 .PHONY : Enemy/Enemy.cpp.s
 
+Files/FileHandler.obj: Files/FileHandler.cpp.obj
+.PHONY : Files/FileHandler.obj
+
+# target to build an object file
+Files/FileHandler.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rpg.dir\build.make CMakeFiles/rpg.dir/Files/FileHandler.cpp.obj
+.PHONY : Files/FileHandler.cpp.obj
+
+Files/FileHandler.i: Files/FileHandler.cpp.i
+.PHONY : Files/FileHandler.i
+
+# target to preprocess a source file
+Files/FileHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rpg.dir\build.make CMakeFiles/rpg.dir/Files/FileHandler.cpp.i
+.PHONY : Files/FileHandler.cpp.i
+
+Files/FileHandler.s: Files/FileHandler.cpp.s
+.PHONY : Files/FileHandler.s
+
+# target to generate assembly for a file
+Files/FileHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\rpg.dir\build.make CMakeFiles/rpg.dir/Files/FileHandler.cpp.s
+.PHONY : Files/FileHandler.cpp.s
+
 Player/Player.obj: Player/Player.cpp.obj
 .PHONY : Player/Player.obj
 
@@ -293,6 +317,9 @@ help:
 	@echo ... Enemy/Enemy.obj
 	@echo ... Enemy/Enemy.i
 	@echo ... Enemy/Enemy.s
+	@echo ... Files/FileHandler.obj
+	@echo ... Files/FileHandler.i
+	@echo ... Files/FileHandler.s
 	@echo ... Player/Player.obj
 	@echo ... Player/Player.i
 	@echo ... Player/Player.s

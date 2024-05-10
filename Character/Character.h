@@ -32,7 +32,7 @@ public:
     void defend();
 
     bool flee(Character* target);
-    string getName();
+    char* getName();
     int getHealth();
     int getAttack();
     int getDefense();

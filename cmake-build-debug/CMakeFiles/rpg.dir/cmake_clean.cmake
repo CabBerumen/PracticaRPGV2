@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/rpg.dir/Combat/Combat.cpp.obj.d"
   "CMakeFiles/rpg.dir/Enemy/Enemy.cpp.obj"
   "CMakeFiles/rpg.dir/Enemy/Enemy.cpp.obj.d"
+  "CMakeFiles/rpg.dir/Files/FileHandler.cpp.obj"
+  "CMakeFiles/rpg.dir/Files/FileHandler.cpp.obj.d"
   "CMakeFiles/rpg.dir/Player/Player.cpp.obj"
   "CMakeFiles/rpg.dir/Player/Player.cpp.obj.d"
   "CMakeFiles/rpg.dir/main.cpp.obj"

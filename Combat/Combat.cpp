@@ -75,35 +75,14 @@ Character* Combat::getTarget(Character* attacker) {
     return nullptr;
 }
 
-void Combat::chooseEnemy() {
-    cout << "Choose your enemy: " << endl;
-    for (int i = 0; i < enemies.size(); ++i) {
-        cout << i+1 << ". " << enemies[i]->getName() << endl;
-    }
-    int choice;
-    cin >> choice;
-    if (choice > 0 && choice <= enemies.size()) {
-        partyMembers[0]->setSelectedEnemy(enemies[choice-1]);
-        participants.clear();
-        participants.push_back(partyMembers[0]);
-        selectedEnemy = enemies[choice-1];
-        participants.push_back(selectedEnemy);
-    } else
-        {
-        selectedEnemy = nullptr;
-    }
-}
-
 void Combat::doCombat() {
     int round = 1;
     cout << "Fight! " << endl;
-    chooseEnemy();
+    combatPrep();
 
     for (auto participant : participants) {
         cout << participant->toString() << endl;
     }
-
-    combatPrep();
 
     while(enemies.size() > 0 && partyMembers.size() > 0) {
         cout<<"Round: " << round << endl;
@@ -112,34 +91,12 @@ void Combat::doCombat() {
         executeActions(it);
 
         cout << "----------------------------------------------" << endl;
-        for (auto participant : participants) {
-            cout << participant->toString() << endl;
-        }
 
         round++;
 
-        if (selectedEnemy && selectedEnemy->getHealth() <= 0)
-        {
-            Player* player = nullptr;
-
-            for (auto participant : participants) {
-                if (participant->getIsPlayer()) {
-                    player = dynamic_cast<Player*>(participant);
-                    break;
-                }
-            }
-            if (player) {
-                player->gainExperience(selectedEnemy->getExperience());
-            }
-
-            if(enemies.empty()) {
-                break;
-            }
-
-        }
     }
 
-    if (selectedEnemy && selectedEnemy->getHealth() <= 0) {
+    if (enemies.empty()) {
         cout << "You win!" << endl;
     } else {
         cout << "You lose!" << endl;

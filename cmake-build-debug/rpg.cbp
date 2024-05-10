@@ -106,6 +106,12 @@
 		<Unit filename="C:/Users/cbeww/CLionProjects/PracticaRPGV2/Enemy/Enemy.h">
 			<Option target="rpg"/>
 		</Unit>
+		<Unit filename="C:/Users/cbeww/CLionProjects/PracticaRPGV2/Files/FileHandler.cpp">
+			<Option target="rpg"/>
+		</Unit>
+		<Unit filename="C:/Users/cbeww/CLionProjects/PracticaRPGV2/Files/FileHandler.h">
+			<Option target="rpg"/>
+		</Unit>
 		<Unit filename="C:/Users/cbeww/CLionProjects/PracticaRPGV2/Player/Player.cpp">
 			<Option target="rpg"/>
 		</Unit>

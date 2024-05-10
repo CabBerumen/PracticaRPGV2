@@ -642,6 +642,8 @@ CMakeFiles/rpg.dir/Enemy/Enemy.cpp.obj: C:/Users/cbeww/CLionProjects/PracticaRPG
   C:/Users/cbeww/CLionProjects/PracticaRPGV2/Utils.h \
   C:/Users/cbeww/CLionProjects/PracticaRPGV2/Enemy/Enemy.h
 
+CMakeFiles/rpg.dir/Files/FileHandler.cpp.obj: C:/Users/cbeww/CLionProjects/PracticaRPGV2/Files/FileHandler.cpp
+
 CMakeFiles/rpg.dir/Player/Player.cpp.obj: C:/Users/cbeww/CLionProjects/PracticaRPGV2/Player/Player.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2024.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/array \
   C:/Program\ Files/JetBrains/CLion\ 2024.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward/binders.h \
@@ -1396,6 +1398,8 @@ C:/Program\ Files/JetBrains/CLion\ 2024.1/bin/mingw/x86_64-w64-mingw32/include/_
 C:/Program\ Files/JetBrains/CLion\ 2024.1/bin/mingw/x86_64-w64-mingw32/include/corecrt_startup.h:
 
 C:/Program\ Files/JetBrains/CLion\ 2024.1/bin/mingw/x86_64-w64-mingw32/include/process.h:
+
+C:/Users/cbeww/CLionProjects/PracticaRPGV2/Files/FileHandler.cpp:
 
 C:/Program\ Files/JetBrains/CLion\ 2024.1/bin/mingw/x86_64-w64-mingw32/include/pthread.h:
 

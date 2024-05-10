@@ -6,8 +6,8 @@
 
 int main() {
     Player *player = new Player("Caleb Berumen", 45, 10, 4, 3);
-    Enemy *enemy = new Enemy("Goblin", 35, 6, 2, 5, 10);
-    Enemy *enemy2 = new Enemy("Orc", 35, 6, 2, 5, 10);
+    Enemy *enemy = new Enemy("Goblin", 35, 6, 2, 5, 100);
+    Enemy *enemy2 = new Enemy("Orc", 35, 6, 2, 5, 100);
 
     vector<Character*> participants;
 

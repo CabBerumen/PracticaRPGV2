@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/cbeww/CLionProjects/PracticaRPGV2/Combat/Action.cpp" "CMakeFiles/rpg.dir/Combat/Action.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Combat/Action.cpp.obj.d"
   "C:/Users/cbeww/CLionProjects/PracticaRPGV2/Combat/Combat.cpp" "CMakeFiles/rpg.dir/Combat/Combat.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Combat/Combat.cpp.obj.d"
   "C:/Users/cbeww/CLionProjects/PracticaRPGV2/Enemy/Enemy.cpp" "CMakeFiles/rpg.dir/Enemy/Enemy.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Enemy/Enemy.cpp.obj.d"
+  "C:/Users/cbeww/CLionProjects/PracticaRPGV2/Files/FileHandler.cpp" "CMakeFiles/rpg.dir/Files/FileHandler.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Files/FileHandler.cpp.obj.d"
   "C:/Users/cbeww/CLionProjects/PracticaRPGV2/Player/Player.cpp" "CMakeFiles/rpg.dir/Player/Player.cpp.obj" "gcc" "CMakeFiles/rpg.dir/Player/Player.cpp.obj.d"
   "C:/Users/cbeww/CLionProjects/PracticaRPGV2/main.cpp" "CMakeFiles/rpg.dir/main.cpp.obj" "gcc" "CMakeFiles/rpg.dir/main.cpp.obj.d"
   )
