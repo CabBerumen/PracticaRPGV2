@@ -38,6 +38,10 @@ void Player::doAttack(Character *target) {
 }
 
 void Player::takeDamage(int damage) {
+
+    // aumenta el ataque del enemigo en cada nivel
+   damage = damage * level;
+
     int trueDamage = damage - defense;
 
     health-= trueDamage >= 0 ? trueDamage: 0;
@@ -47,10 +51,13 @@ void Player::takeDamage(int damage) {
     if(health <= 0) {
         cout << name << " has been defeated!" << endl;
     }
+
 }
 
 void Player::levelUp()
 {
+
+
     int points = 5;
 
     level++;
@@ -116,7 +123,7 @@ Action Player::takeAction(vector<Enemy*> enemies) {
     case 1:
         target = selectTarget(enemies);
         currentAction.target = target;
-        currentAction.action = [this, target, &enemies](){
+        currentAction.action = [this, target](){
             doAttack(target);
             if (target -> getHealth() <= 0)
             {

@@ -14,28 +14,43 @@ Player* loadPlayerInfo() {
         //Preguntar al usuario el nombre de jugador
         //return new Player("Otro Jugador", 10, 5, 4, 3);
         cout << "No data saved... " << endl;
-        return new Player("Caleb Berumen", 40, 10, 5, 3);
+        return new Player("Caleb Berumen", 75, 15, 15, 3);
     }
 }
 
 int main() {
-    Player *player = loadPlayerInfo();
-    cout << player -> getName() << endl;
-    cout << player -> toString() << endl;
-    Enemy *enemy = new Enemy("Goblin", 35, 6, 2, 5, 75);
-    Enemy *enemy2 = new Enemy("Orc", 35, 6, 2, 5, 75);
 
-    vector<Character*> participants;
+    while (true)
+    {
+        Player *player = loadPlayerInfo();
+        cout << player -> getName() << endl;
+        cout << player -> toString() << endl;
+        Enemy *enemy = new Enemy("Goblin", 40, 15, 5, 5, 75);
+        Enemy *enemy2 = new Enemy("Orc", 40, 15, 5, 5, 100);
 
-    participants.push_back(player);
-    participants.push_back(enemy);
-    participants.push_back(enemy2);
+        vector<Character*> participants;
 
-    Combat *combat = new Combat(participants);
-    combat->doCombat();
+        participants.push_back(player);
+        participants.push_back(enemy);
+        participants.push_back(enemy2);
 
-    delete player;
-    delete enemy;
-    delete combat;
+        Combat *combat = new Combat(participants);
+        combat->doCombat();
+
+        delete player;
+        delete enemy;
+        delete combat;
+
+        int var;
+
+        cout << "Start again? \n 1. Si\n 2. No " << endl;
+        cin >> var;
+        if (var != 1 )
+        {
+            break;
+        }
+
+    }
     return 0;
+
 }
