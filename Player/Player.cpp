@@ -20,6 +20,7 @@ Player::Player(const char _name[], int _health, int _attack, int _defense, int _
 {
     level = _level;
     experience = _experience;
+
 }
 
 void Player::saveProgress()
@@ -39,9 +40,9 @@ void Player::doAttack(Character *target) {
 void Player::takeDamage(int damage) {
     int trueDamage = damage - defense;
 
-    health-= trueDamage;
+    health-= trueDamage >= 0 ? trueDamage: 0;
 
-    cout << name << " took " << trueDamage << " damage!" << endl;
+    cout << name << " took " << (trueDamage >= 0 ? trueDamage: 0) << " damage!" << endl;
 
     if(health <= 0) {
         cout << name << " has been defeated!" << endl;
@@ -146,40 +147,39 @@ Action Player::takeAction(vector<Enemy*> enemies) {
     return currentAction;
 }
 
-char* Player::serialize()
-{
+char* Player::serialize(){
     char* iterator = buffer;
 
-    memcpy(iterator, &name, sizeof(name));
+    memcpy(iterator,&name, sizeof(name));
     iterator += sizeof(name);
 
     memcpy(iterator, &health, sizeof(health));
     iterator += sizeof(health);
 
-    memcpy(iterator, &attack, sizeof(attack));
+    memcpy(iterator,&attack,sizeof(attack));
     iterator += sizeof(attack);
 
-    memcpy(iterator, &defense, sizeof(defense));
+    memcpy(iterator,&defense,sizeof(defense));
     iterator += sizeof(defense);
 
-    memcpy(iterator, &speed, sizeof(speed));
+    memcpy(iterator,&speed,sizeof(speed));
     iterator += sizeof(speed);
 
-    memcpy(iterator, &isPlayer, sizeof(isPlayer));
+    memcpy(iterator,&isPlayer,sizeof(isPlayer));
     iterator += sizeof(isPlayer);
 
-    memcpy(iterator, &level, sizeof(level));
+    memcpy(iterator,&level,sizeof(level));
     iterator += sizeof(level);
-
-    memcpy(iterator, &experience, sizeof(experience));
+    memcpy(iterator,&experience,sizeof(experience));
     iterator += sizeof(experience);
 
     return buffer;
+
 }
 
-Player* Player::unserialize(char* buffer)
-{
-    char* iterator = buffer;
+Player* Player::unserialize(char* buffer) {
+    char *iterator = buffer;
+
     char name[40];
     int health, attack, defense, speed, level, experience;
     bool isPlayer;
@@ -192,7 +192,6 @@ Player* Player::unserialize(char* buffer)
 
     memcpy(&attack, iterator, sizeof(attack));
     iterator += sizeof(attack);
-
 
     memcpy(&defense, iterator, sizeof(defense));
     iterator += sizeof(defense);

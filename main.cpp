@@ -13,12 +13,14 @@ Player* loadPlayerInfo() {
     } catch(int error) {
         //Preguntar al usuario el nombre de jugador
         //return new Player("Otro Jugador", 10, 5, 4, 3);
+        cout << "No data saved... " << endl;
         return new Player("Caleb Berumen", 40, 10, 5, 3);
     }
 }
 
 int main() {
     Player *player = loadPlayerInfo();
+    cout << player -> getName() << endl;
     cout << player -> toString() << endl;
     Enemy *enemy = new Enemy("Goblin", 35, 6, 2, 5, 75);
     Enemy *enemy2 = new Enemy("Orc", 35, 6, 2, 5, 75);
